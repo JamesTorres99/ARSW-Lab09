@@ -132,3 +132,121 @@ cambio de tamaño.
 
 ### *PARTE II: Escalabilidad horizontal*
 
+Iniciamos creando el equilibrador de carga con la siguiente configuracion.
+
+![Maquina](./img/Captura19.PNG)
+
+Se crea un BackendPool y su sondeo de estado con la siguiente configuracion.
+
+![Maquina](./img/Captura20.PNG)
+
+![Maquina](./img/Captura21.PNG)
+
+Se agrega la regla de equilibrio de carga y se crea una red virtual.
+
+![Maquina](./img/Captura22.PNG)
+
+![Maquina](./img/Captura23.PNG)
+
+Iniciamos la creacion de las 3 maquinas virtuales con su configuracion basica y de red.
+
+![Maquina](./img/Captura24.PNG)
+
+![Maquina](./img/Captura25.PNG)
+
+![Maquina](./img/Captura26.PNG)
+
+![Maquina](./img/Captura27.PNG)
+
+![Maquina](./img/Captura28.PNG)
+
+Se realiza la conexion con las maquinas virtuales y se procede a hacer instalacion de los complementos usados
+
+![Maquina](./img/Captura29.PNG)
+
+![Maquina](./img/Captura30.PNG)
+
+se realiza la prueba en el navegador.
+
+![Maquina](./img/Captura31.PNG)
+
+![Maquina](./img/Captura32.PNG)
+
+### Preguntas
+
+1. ¿Cuáles son los tipos de balanceadores de carga en Azure y en qué se diferencian?, ¿Qué es SKU, qué tipos hay y en qué se diferencian?, ¿Por qué el balanceador de carga necesita una IP pública?
+
+existen dos tipos de load balancer:
+
+- uno es de tipo publico el cual proporciona conexiones a las maquinas salientes en donde su direccion IP privadas se trasforman a IP publicas, es mas usado para balancear la carga del trafico en internet.
+- el segundo es de tipo interno o privado el cual necesita direcciones IP privadas solo en la interfaz, es frecuentemente usado en el trafico de una red virtual.
+
+*SKU*
+
+Azure Container Registry es una unidad de mantenimiento de existencias, son un codigo unico asignado a un servicio o producto dentro de azure y representan la posibilidad de comprar existencias.
+Estos niveles proporcionan precios predecibles y varias opciones para alinearse con la capacidad y los patrones de uso de su registro.
+
+existen tres tipos de SKU:
+
+- Basico: Un punto de entrada con costos optimizados para que los desarrolladores aprendan sobre Azure Container Registry. 
+- Estandar: Los registros estándar ofrecen las mismas capacidades que los básicos, con un mayor rendimiento de imágenes y almacenamiento incluido.
+- Premium: Los registros Premium proporcionan la mayor cantidad de almacenamiento incluido y operaciones simultáneas, lo que permite escenarios de gran volumen.
+
+IP pública en los load balancer: es necesario asociar una direccion IP publica con una instancia de load balancer para que sea accesible desde internet.
+
+2. ¿Cuál es el propósito del Backend Pool?
+
+El proposito de Backend Pool es brindar trafico para una regla de load balancer determinada.
+
+3. ¿Cuál es el propósito del Health Probe?
+
+El proposito de Health Probe es determinar si la instancia esta en buen estado. si la instancia falla dejara de recibir trafico hasta que vuelva a pasar las pruebas de nuevo.
+
+4. ¿Cuál es el propósito de la Load Balancing Rule? ¿Qué tipos de sesión persistente existen, por qué esto es importante y cómo puede afectar la escalabilidad del sistema?.
+
+Las reglas que se definen para el agente de escucha determinan cómo el balanceador de carga va a direccionar las solicitudes a los destinos de uno o varios grupos de destino.
+
+Cuando el cliente inicia una nueva sesión desde la misma IP de origen, el puerto de origen cambia y provoca que el tráfico vaya hacia otro punto de conexión del centro de datos.
+
+5. ¿Qué es una Virtual Network? ¿Qué es una Subnet? ¿Para qué sirven los address space y address range?
+
+Azure Virtual Network es el bloque de construcción fundamental para su red privada en Azure. permite que muchos tipos de recursos de Azure se comuniquen de forma segura entre sí, con Internet y con las redes locales.
+
+las Subnet permiten segmentar la red virtual en una o más subredes y asignar una parte del espacio de direcciones de la red virtual a cada subred.
+
+Al crear una red virtual, se debe especificar un espacio de direcciones IP privado personalizado utilizando direcciones públicas y privadas.
+
+6. ¿Qué son las Availability Zone y por qué seleccionamos 3 diferentes zonas?. ¿Qué significa que una IP sea zone-redundant?
+
+Las zonas de disponibilidad son ubicaciones aisladas de errores en una región de Azure que proporcionan alimentación, refrigeración y funcionalidad de red redundantes.
+
+Seleccionamos 3 zonas de disponibilidad diferentes para tener la capacidad de aislar las máquinas virtuales dentro de tres centros de datos diferentes para obtener alta disponibilidad.
+
+7. ¿Cuál es el propósito del Network Security Group?
+
+Un Network Security Group consta de un conjunto de reglas de control de acceso que describen los filtros de tráfico. Estos pueden asociarse con una máquina virtual o una subred en la misma región. 
+
+8. Informe de newman 1 (Punto 2)
+
+Pruebas con cada maquina.
+
+![Maquina](./img/Captura33.PNG)
+
+pruebas con la maquina numero 4.
+
+![Maquina](./img/Captura34.PNG)
+
+uso de cpu en:
+
+vm1.
+![Maquina](./img/Captura35.PNG)
+
+vm2.
+![Maquina](./img/Captura36.PNG)
+
+vm3.
+![Maquina](./img/Captura38.PNG)
+
+vm4 observamos aqui la reducion del trafico.
+![Maquina](./img/Captura37.PNG)
+
