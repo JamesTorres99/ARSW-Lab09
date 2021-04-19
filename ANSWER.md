@@ -81,6 +81,7 @@ Se debe crear un Inbound port rule para permitir el acceso al servicio publico.
 4. Adjunte tabla de tiempos e interprete por qué la función tarda tando tiempo.
 
 ![Maquina](./img/Captura10.PNG)
+![Maquina](./img/Captura18.PNG)
 
 5. Adjunte imágen del consumo de CPU de la VM e interprete por qué la función consume esa cantidad de CPU.
 
@@ -128,4 +129,6 @@ cambio de tamaño.
 
 11. Aumente la cantidad de ejecuciones paralelas del comando de postman a 4. ¿El comportamiento del sistema es porcentualmente mejor?
 	- El porcentaje del comportamiento es mejor ya que presenta menos fallos.
+
+### *PARTE II: Escalabilidad horizontal*
 
