@@ -239,14 +239,23 @@ pruebas con la maquina numero 4.
 uso de cpu en:
 
 vm1.
+
 ![Maquina](./img/Captura35.PNG)
 
 vm2.
+
 ![Maquina](./img/Captura36.PNG)
 
 vm3.
+
 ![Maquina](./img/Captura38.PNG)
 
 vm4 observamos aqui la reducion del trafico.
+
 ![Maquina](./img/Captura37.PNG)
 
+9. Presente el Diagrama de Despliegue de la solución.
+
+Diagrama de despliegue.
+
+![Maquina](./img/Captura39.PNG)
